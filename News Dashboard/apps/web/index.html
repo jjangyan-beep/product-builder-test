@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="분야별 뉴스 제목과 출처를 한눈에 보고 원문으로 이동하는 개인 뉴스 대시보드">
+  <title>뉴스 모아보기</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#news">뉴스 바로가기</a>
+  <div class="page">
+    <header class="masthead">
+      <div><div class="eyebrow">MY DAILY BRIEF</div><h1>뉴스 모아보기<span class="brand-dot">.</span></h1></div>
+      <div class="header-tools"><span id="today"></span><button id="theme" type="button" aria-pressed="false">다크 모드</button></div>
+    </header>
+    <div class="statusbar"><p id="status" role="status">뉴스 목록을 불러오는 중입니다.</p><button id="refresh" type="button">↻ 새로고침</button></div>
+    <nav id="tabs" aria-label="뉴스 분야" role="tablist"></nav>
+    <main id="news" role="tabpanel" aria-labelledby="tab-stocks" tabindex="0">
+      <div class="section-heading"><div><p class="eyebrow">LATEST NEWS</p><h2 id="section-title">증권</h2></div><p id="count"></p></div>
+      <div id="coverage" class="coverage" hidden></div>
+      <div id="cards" class="cards"></div>
+      <section id="more" hidden><div class="list-heading"><h3>더 많은 뉴스</h3><span>최신순</span></div><div class="table-wrap"><table><caption class="sr-only">분야별 뉴스 목록</caption><thead><tr><th scope="col">번호</th><th scope="col">제목</th><th scope="col">출처</th><th scope="col">발행 시각</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+      <div id="empty" class="empty" hidden><span class="empty-symbol">—</span><h3>아직 모인 뉴스가 없습니다</h3><p>다른 분야를 살펴보거나 잠시 후 새로고침해 주세요.</p></div>
+    </main>
+    <footer><p>제목을 누르면 언론사 원문이 새 탭에서 열립니다.</p><p>출처: <a href="https://news.sbs.co.kr/news/rss.do" target="_blank" rel="noopener noreferrer">SBS 뉴스 RSS ↗</a><span class="footer-separator">·</span>개인 뉴스 모아보기</p></footer>
+  </div>
+  <noscript>뉴스 목록을 보려면 브라우저에서 JavaScript를 켜 주세요.</noscript>
+</body>
+</html>

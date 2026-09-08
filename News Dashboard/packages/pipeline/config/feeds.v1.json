@@ -1,0 +1,21 @@
+{
+  "version": "1",
+  "status": "enabled_personal_noncommercial",
+  "publishers": [
+    {
+      "id": "sbs",
+      "name": "SBS",
+      "allowedHosts": ["news.sbs.co.kr"],
+      "rightsProfileId": "sbs-rss-personal-noncommercial-v1",
+      "opinionPathSegments": [],
+      "feeds": [
+        { "id": "sbs-politics", "url": "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER", "sectionHint": "politics", "sectionStrategy": "fixed" },
+        { "id": "sbs-economy", "url": "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=02&plink=RSSREADER", "sectionHint": "economy", "sectionStrategy": "fallback", "classificationTargets": ["economy", "stocks", "global_markets"] },
+        { "id": "sbs-society", "url": "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=03&plink=RSSREADER", "sectionHint": "society", "sectionStrategy": "fixed" },
+        { "id": "sbs-world", "url": "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=07&plink=RSSREADER", "sectionHint": "world", "sectionStrategy": "fallback", "classificationTargets": ["world", "global_markets"] },
+        { "id": "sbs-entertainment", "url": "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=14&plink=RSSREADER", "sectionHint": "entertainment", "sectionStrategy": "fixed" },
+        { "id": "sbs-sports", "url": "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=09&plink=RSSREADER", "sectionHint": "sports", "sectionStrategy": "fixed" }
+      ]
+    }
+  ]
+}

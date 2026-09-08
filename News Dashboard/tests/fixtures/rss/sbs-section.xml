@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>SBS 정치</title>
+    <item>
+      <title><![CDATA[국회 본회의 주요 법안 처리]]></title>
+      <link>https://news.sbs.co.kr/news/endPage.do?news_id=N1000001&amp;utm_source=rss</link>
+      <guid>N1000001</guid>
+      <pubDate>Mon, 07 Sep 2026 09:00:00 +0900</pubDate>
+      <description>이 내용은 수집 결과에 포함되면 안 됩니다.</description>
+    </item>
+    <item>
+      <title>[사설] 정책을 다시 본다</title>
+      <link>https://news.sbs.co.kr/news/endPage.do?news_id=N1000002</link>
+      <guid>N1000002</guid>
+      <pubDate>Mon, 07 Sep 2026 08:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -8,45 +8,48 @@ current terms are verified during implementation.
 
 ## News metadata
 
-### Conditional: GDELT DOC 2.0
+### Rejected: GDELT DOC 2.0
 
-Use GDELT as the primary discovery candidate for title, article URL, publisher
-domain, language, and provider-observed/indexed time only. This time never
-becomes a publisher timestamp merely because a sample looks similar; only a
-source that explicitly supplies publication time may populate `publishedAt`.
-The sample measures product suitability and observed delay. Do not retain image data, snippets,
-context, or article bodies. GDELT states that its open datasets may be used and
-redistributed with attribution, while the DOC API supports JSON output, domain
-filters, time windows, and date ordering.
+GDELT is retained here only as dated evaluation evidence. The owner rejected it
+for production ingestion on 2026-09-07 after the validation environment could
+not complete a representative sample reliably. Runtime code, configuration,
+and tests no longer reference GDELT.
 
 - [GDELT project and data use](https://www.gdeltproject.org/about.html)
 - [DOC 2.0 API](https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/)
 - [Rate-limiting guidance](https://blog.gdeltproject.org/ukraine-api-rate-limiting-web-ngrams-3-0/)
 
-Use a fixed Korean-publisher exact-host allowlist and do not follow redirects
-or fetch article pages. Run a seven-day coverage sample before freezing the initial allowlist;
-GDELT has no coverage SLA or fixed public quota.
+The 2026-09-07 local spike attempted two fixed-window metadata requests before
+opening its failure circuit. One returned HTTP 429 after about 11.5 seconds and
+one ended with a network error after about 10.2 seconds. A separate, non-canonical
+four-request spot check also received HTTP 429 consistently. No raw
+response or publisher page was persisted or fetched. This is not evidence of
+zero news coverage; it is evidence that the current/shared egress cannot
+complete the required measurement reliably. See the historical
+[dated spike report](spikes/gdelt-7day-2026-09-07.md).
 
-### Selected as a limited secondary source: SBS RSS
+### Selected initial source: SBS RSS
 
-SBS publishes official section feeds for personal, non-commercial use. Ingest
-only feed title, link, GUID, and timestamps. Discard descriptions and content,
-and do not send them to an AI model.
+SBS publishes official section feeds for personal, non-commercial use. The
+initial registry enables politics, economy, society, world, entertainment, and
+sports feeds. Economy and world are mixed feeds: title classification may route
+an item to domestic stocks or global markets. Ingest only feed title, link,
+GUID, and publisher timestamp. Discard descriptions, content, authors, media,
+and images immediately, and do not send them to an AI model.
 
 - [SBS RSS information](https://news.sbs.co.kr/news/rss.do)
 
 ### Deferred
 
 Direct feeds from other publishers remain disabled pending explicit compatible
-terms or written permission. Naver News Search is not selected because its
-search-result display and retention rules do not fit persistent reclassification
-and ranking. BIGKinds is not selected because its API availability is not a
-stable personal free-tier contract.
+terms or written permission. Naver News Search is excluded: its 2026-09-07
+terms require independent, unmodified display of Naver search results and
+restrict copying/caching, reranking, mixing, and AI use, which conflicts with
+this dashboard's eight-section aggregation pipeline. BIGKinds is not selected
+because its API availability is not a stable personal free-tier contract.
 
-The candidate allowlist for the GDELT metadata route is: SBS, KBS, MBC, YTN,
-Yonhap, Hankyoreh, Kyunghyang, Chosun, JoongAng, Dong-A, Korea Economic Daily,
-and Maeil Business Newspaper. Inclusion here permits only domain-filtered
-metadata discovery through GDELT, not direct crawling.
+- [Naver News Search API](https://developers.naver.com/docs/serviceapi/search/news/news.md)
+- [Naver Search API terms change effective 2026-09-07](https://developers.naver.com/notice/article/33400)
 
 ## Domestic market
 

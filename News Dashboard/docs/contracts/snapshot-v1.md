@@ -1,5 +1,10 @@
 # Snapshot contract v1
 
+Deferred full-product proposal. The current local reader uses the smaller
+`news-dashboard.links/1` contract documented in `docs/simple-dashboard.md`
+and validated by `apps/web/model.js`. In particular, empty sections are valid
+and there are no AI summaries or market values in the current payload.
+
 Contract identifier: `news-dashboard.snapshot/1.0`
 
 All timestamps are RFC 3339 with an explicit offset. Dates are `YYYY-MM-DD` in
@@ -56,7 +61,7 @@ verified HTTPS rewrite. Redirects are not followed. Host checks use exact
 allowed hosts, never loose suffix matching.
 
 The registry maps each publisher ID to its display name, exact allowed hosts,
-GDELT query domains, direct-feed enablement, opinion exclusion rules, and
+verified official RSS endpoints, section hints, opinion exclusion rules, and
 rights profile. Conservative opinion path/title markers are tested and each
 rejection is counted by reason.
 
@@ -182,7 +187,7 @@ News publication invariants:
 - `generated` requires a non-empty neutral Korean summary of one or two
   sentences; every other summary status requires `summary: null`. Ranks 1..5
   cannot use `not_required`; ranks 6..20 use only `not_required`.
-- `publicRank` defaults to null. It is never inferred from GDELT ordering or
+- `publicRank` defaults to null. It is never inferred from feed ordering or
   presented as a publisher view count.
 
 ## Market snapshot

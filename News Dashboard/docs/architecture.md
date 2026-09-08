@@ -1,6 +1,9 @@
 # MVP architecture
 
-Status: proposed for `ARCH-001` acceptance
+Status: deferred proposal. The active implementation is the simpler local
+news-link reader documented in [simple-dashboard.md](simple-dashboard.md),
+following the user's 2026-09-08 scope clarification. The components and
+release gates below do not block the local reader.
 
 ## Outcome
 
@@ -102,10 +105,18 @@ request URLs are excluded from browser bundles and logs.
 ## Collection boundaries
 
 Provider adapters emit a versioned normalized candidate contract. A versioned
-publisher registry maps publisher IDs to exact allowed hosts, GDELT query
-domains, rights profiles, and conservative opinion-path/title exclusions.
-Adapters do not follow publisher redirects or fetch article pages. Provider
-request health and publisher coverage are measured separately.
+feed registry maps publisher IDs to exact allowed hosts, verified official RSS
+endpoints, section hints, rights profiles, and conservative opinion exclusions.
+The initial enabled set is the six SBS section feeds. Mixed economy and world
+feeds use title classification only to distinguish stocks and overseas markets;
+explicit section feeds otherwise retain their publisher mapping.
+
+Each feed is isolated, limited to two attempts and a 10-second timeout, and no
+more than three feeds run concurrently. Adapters reject redirects, DTD/entity
+declarations, responses over 2 MiB, unsafe article URLs, and unexpected hosts.
+They do not fetch article pages or retain raw XML, descriptions, content,
+authors, media, or images. Provider request health and publisher coverage are
+measured separately.
 
 ## AI summaries
 

@@ -1,0 +1,24 @@
+{
+  "name": "news-dashboard",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node --experimental-strip-types scripts/serve.ts",
+    "refresh": "node --experimental-strip-types scripts/refresh.ts",
+    "build": "node --experimental-strip-types scripts/build.ts",
+    "smoke:rss": "node --experimental-strip-types packages/pipeline/src/news/rss-smoke.ts",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "check:leaks": "node --experimental-strip-types packages/pipeline/src/quality/leak-check.ts apps scripts docs packages tests package.json .gitignore"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "dependencies": {
+    "fast-xml-parser": "5.11.1"
+  }
+}

@@ -2,6 +2,15 @@
 
 ## Purpose
 
+Implementation scope updated 2026-09-08: the user requested a simple news-link
+reader. For the first usable version, show titles/publishers/times/original
+links only, at most 20 available articles per section (zero is valid), and use
+exact URL/title deduplication. AI summaries, semantic event clustering, market
+data and hosted infrastructure are deferred. Plain HTML/CSS/JavaScript and
+local JSON storage replace the proposed framework/database for this phase.
+The broader requirements below remain future direction where they differ.
+See `docs/simple-dashboard.md` for the implemented behavior.
+
 A personal, Korean-language dashboard for monitoring major breaking news. It
 uses Korean publishers only and opens the original publisher page in a new tab.
 
